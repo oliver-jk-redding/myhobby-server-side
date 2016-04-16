@@ -1,18 +1,21 @@
 {
   "users": [{
     "id": "1",
-    "name": "Harry Hobbymouse",
-    "profileImg": "http://pngimg.com/upload/rat_mouse_PNG2465.png",
+    "name": "Eugene Nerdington",
+    "profileImg": "http://vignette1.wikia.nocookie.net/creepypasta/images/5/5c/Sad-forever-alone-face-only-l.png/revision/latest?cb=20140508170204",
     "hobbies": [
-      {"name": "karate", "image": ""},
-      {"name": "scissor-cutting", "image": ""}
+      {"name": "Being a nerd", "image": ""},
+      {"name": "Binary", "image": ""}
     ],
-    "groups": [],
+    "groups": [
+      {"id": 1, "name": "Being Awesome Anonymous"},
+      {"id": 2, "name": "Donald Trump for President"}
+    ],
     "projects": [{
       "id": "1",
-      "name": "Helm's Deep",
+      "name": "Nerdfort",
       "dateStart": "13/04/16",
-      "progressShots": [ 
+      "progressShots": [
         "https://onyxworkshop.files.wordpress.com/2009/02/1.jpg?w=630",
         "https://onyxworkshop.files.wordpress.com/2009/02/2.jpg?w=630",
         "https://onyxworkshop.files.wordpress.com/2009/02/3.jpg?w=630",
@@ -44,7 +47,7 @@
         "https://onyxworkshop.files.wordpress.com/2009/02/helms-deep.jpg?w=630",
         "https://onyxworkshop.files.wordpress.com/2009/02/helms-deep-sml2.jpg?w=630",
         "https://sb.scorecardresearch.com/p?c1=2&c2=7518284&c3=&c4=&c5=&c6=&c15=&cv=2.0&cj=1",
-        "https://pixel.wp.com/b.gif?v=noscript" 
+        "https://pixel.wp.com/b.gif?v=noscript"
       ]
     }]
   }]
