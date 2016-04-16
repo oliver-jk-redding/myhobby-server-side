@@ -57,8 +57,8 @@ router.get('/projects/:id', function (req, res) {
   res.send()
 })
 
-//creates a new project with the given id
-router.post('/projects/:id', function (req, res) {
+//creates a new project for the user with the given id
+router.post('/user/:id', function (req, res) {
   res.status(202)
   res.send()
 })
