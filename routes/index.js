@@ -6,9 +6,9 @@ var getUserInfo = require('./../utils/get-user-info-util')
 // Returns json of users
 router.get('/users', function (req, res) {
   res.status(200)
-  getUsers(function(err, data) {
+  getUsers(function(err, userInfo) {
     if(err) {console.log(err); return;}
-    res.send(data);
+    res.send(userInfo);
   })
 })
 
@@ -60,7 +60,15 @@ router.get('/projects/:id', function (req, res) {
 //creates a new project for the user with the given id
 router.post('/user/:id', function (req, res) {
   res.status(202)
-  res.send()
+  getUserInfo(req.params.id, function(err, userInfo) {
+    if(err) {console.log(err); return;}
+    var newProject = {
+      id: new Date().now(),
+      name: req.body.projectName,
+      dateStart: new Date().toLocaleDateString(),
+      progressShots: 'hi'
+    }
+  })
 })
 
 //returns a json of the updated project
