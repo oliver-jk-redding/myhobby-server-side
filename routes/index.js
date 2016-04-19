@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var getUsers = require('./../utils/get-users-util');
-var getUserInfo = require('./../utils/get-user-info-util')
+var getUserInfo = require('./../utils/get-user-info-util');
+var updateDB = require('./../utils/update-DB-util');
 
 // Returns json of users
 router.get('/users', function (req, res) {
@@ -61,13 +62,21 @@ router.get('/projects/:id', function (req, res) {
 router.post('/user/:id', function (req, res) {
   res.status(202)
   getUserInfo(req.params.id, function(err, userInfo) {
-    if(err) {console.log(err); return;}
+    if(err) {console.log('ERROR: ', err); return;}
     var newProject = {
-      id: new Date().now(),
+      id: Date.now(),
       name: req.body.projectName,
       dateStart: new Date().toLocaleDateString(),
-      progressShots: 'hi'
+      progressShots: ["hi"]
     }
+    userInfo.projects.push(newProject);
+    getUsers(function(err, data) {
+      if(err) {console.log('ERROR: ', err); return;}
+      for(var user in data.users)
+        if(data.users[user].id === userInfo.id)
+          data.users[user] = userInfo;
+      updateDB(data)
+    })
   })
 })
 
