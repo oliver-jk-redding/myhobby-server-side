@@ -2,10 +2,46 @@
 
 var express = require('express');
 var router = express.Router();
-var uploadManager = require('./uploadManager')(router);
+// var uploadManager = require('./uploadManager')(router);
 var getUsers = require('./../utils/get-users-util');
 var getUserInfo = require('./../utils/get-user-info-util');
 var updateDB = require('./../utils/update-DB-util');
+
+//--------------------
+
+var options = {
+  tmpDir: __dirname + '/../public/uploaded/tmp',
+  uploadDir: __dirname + '/../public/uploaded/files',
+  uploadUrl: '/uploaded/files/',
+  storage: {
+    type: 'local'
+  }
+};
+
+var uploader = require('blueimp-file-upload-expressjs')(options);
+
+router.get('/upload', function(req, res) {
+  console.log('i got an image!')
+  uploader.get(req, res, function(obj) {
+    res.send(JSON.stringify(obj));
+  });
+});
+
+router.post('/upload', function(req, res) {
+  uploader.post(req, res, function(obj) {
+    res.send(JSON.stringify(obj));
+  });
+});
+
+router.delete('/uploaded/files/:name', function(req, res) {
+  uploader.delete(req, res, function(obj) {
+    res.send(JSON.stringify(obj));
+  });
+});
+
+//-----------------------
+
+
 
 // Returns json of users
 router.get('/users', function (req, res) {

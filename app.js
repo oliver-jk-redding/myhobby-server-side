@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 
 var routes = require('./routes/index');
-var uploads = require('./routes/uploadManager.js')
+// var uploads = require('./routes/uploadManager.js')
 
 var app = express();
 
@@ -20,11 +20,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:8080");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods: GET, POST");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Custom-Header", "cache-control:no-cache");
   next();
 });
 
 app.use('/v1/myhobby', routes);
-app.use('/v1/myhobby', uploads);
+// app.use('/v1/myhobby', uploads);
 
 module.exports = app;
