@@ -1,5 +1,8 @@
+'use strict'
+
 var express = require('express');
 var router = express.Router();
+var uploadManager = require('./uploadManager')(router);
 var getUsers = require('./../utils/get-users-util');
 var getUserInfo = require('./../utils/get-user-info-util');
 var updateDB = require('./../utils/update-DB-util');
@@ -93,4 +96,4 @@ router.delete('/projects/:id', function (req, res) {
 })
 
 
-module.exports = router
+module.exports = router;

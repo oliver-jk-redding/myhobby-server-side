@@ -5,7 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
 var routes = require('./routes/index');
+var uploads = require('./routes/uploadManager.js')
 
 var app = express();
 
@@ -23,5 +25,6 @@ app.use(function(req, res, next) {
 });
 
 app.use('/v1/myhobby', routes);
+app.use('/v1/myhobby', uploads);
 
 module.exports = app;
